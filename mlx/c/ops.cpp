@@ -744,12 +744,13 @@ extern "C" mlx_array mlx_slice_update(
       s->ctx));
 }
 extern "C" mlx_array
-mlx_softmax(mlx_array a, const int* axes, size_t num_axes, mlx_stream s) {
+mlx_softmax(mlx_array a, const int* axes, size_t num_axes, bool precise, mlx_stream s) {
   return MLX_C_ARRAY(
-      mlx::core::softmax(a->ctx, MLX_CPP_INTVEC(axes, num_axes), s->ctx));
+//        mlx::core::softmax(a->ctx, MLX_CPP_INTVEC(axes, num_axes)));
+      mlx::core::softmax(a->ctx, MLX_CPP_INTVEC(axes, num_axes), precise, s->ctx));
 }
-extern "C" mlx_array mlx_softmax_all(mlx_array a, mlx_stream s) {
-  return MLX_C_ARRAY(mlx::core::softmax(a->ctx, s->ctx));
+extern "C" mlx_array mlx_softmax_all(mlx_array a, bool precise, mlx_stream s) {
+  return MLX_C_ARRAY(mlx::core::softmax(a->ctx, precise, s->ctx));
 }
 extern "C" mlx_array mlx_sort(mlx_array a, int axis, mlx_stream s) {
   return MLX_C_ARRAY(mlx::core::sort(a->ctx, axis, s->ctx));

@@ -361,8 +361,8 @@ mlx_array mlx_slice_update(
     size_t num_strides,
     mlx_stream s);
 mlx_array
-mlx_softmax(mlx_array a, const int* axes, size_t num_axes, mlx_stream s);
-mlx_array mlx_softmax_all(mlx_array a, mlx_stream s);
+mlx_softmax(mlx_array a, const int* axes, size_t num_axes, bool precise, mlx_stream s);
+mlx_array mlx_softmax_all(mlx_array a, bool precise, mlx_stream s);
 mlx_array mlx_sort(mlx_array a, int axis, mlx_stream s);
 mlx_array mlx_sort_all(mlx_array a, mlx_stream s);
 mlx_vector_array
